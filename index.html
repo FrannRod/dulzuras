@@ -4,16 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dulzuras Mágicas | Pastelería Artesanal</title>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap"
-    rel="stylesheet"
-  />
-
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-    /* ---------- PALETA ---------- */
     :root {
       --lila-base: #e4c4f5;
       --lila-medium: #d199f0;
@@ -25,15 +18,7 @@
       --texto-oscuro: #2e2233;
       --blanco: #ffffff;
     }
-
-    /* ---------- RESET SUAVE ---------- */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Nunito', sans-serif;
       color: var(--texto-oscuro);
@@ -48,47 +33,19 @@
       display: block;
       border-radius: 1rem;
     }
-    h1,
-    h2,
-    h3 {
-      font-weight: 800;
-    }
-
-    /* ---------- NAV ---------- */
+    h1, h2, h3 { font-weight: 800; }
     .navbar {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      top: 0; left: 0; width: 100%;
+      display: flex; justify-content: space-between; align-items: center;
       padding: 0.75rem 1.5rem;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(8px);
-      z-index: 10;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(8px); z-index: 10;
     }
-    .navbar img {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-    }
-    .navbar ul {
-      list-style: none;
-      display: flex;
-      gap: 1.25rem;
-      font-weight: 600;
-    }
-    .navbar a {
-      color: var(--texto-oscuro);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .navbar a:hover {
-      color: var(--magenta);
-    }
-
-    /* ---------- HERO ---------- */
+    .navbar img { width: 48px; height: 48px; border-radius: 50%; }
+    .navbar ul { list-style: none; display: flex; gap: 1.25rem; font-weight: 600; }
+    .navbar a { color: var(--texto-oscuro); text-decoration: none; transition: color 0.2s; }
+    .navbar a:hover { color: var(--magenta); }
     .hero {
       min-height: 100vh;
       display: grid;
@@ -96,311 +53,186 @@
       text-align: center;
       padding: 7rem 1rem 3rem;
       background: linear-gradient(180deg, var(--durazno) 0%, var(--lila-base) 100%);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
     .hero::after {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: radial-gradient(circle at 80% 20%, rgba(255, 200, 92, 0.5), transparent 60%);
       pointer-events: none;
     }
-    .hero h1 {
-      font-size: clamp(2.25rem, 5vw, 4rem);
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.25rem;
-      max-width: 540px;
-      margin: 0 auto 2rem;
-    }
+    .hero h1 { font-size: clamp(2.25rem, 5vw, 4rem); margin-bottom: 1rem; }
+    .hero p { font-size: 1.25rem; max-width: 540px; margin: 0 auto 2rem; }
     .btn {
-      display: inline-block;
-      background: var(--amarillo-chispa);
-      color: var(--texto-oscuro);
-      padding: 0.9rem 2.25rem;
-      border-radius: 9999px;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+      display: inline-block; background: var(--amarillo-chispa); color: var(--texto-oscuro);
+      padding: 0.9rem 2.25rem; border-radius: 999px;
+      font-weight: 700; text-decoration: none;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
       transition: transform 0.25s, box-shadow 0.25s;
     }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-    }
-
-    /* ---------- SECCIONES ---------- */
-    section {
-      padding: 4.5rem 1rem;
-      max-width: 1180px;
-      margin: 0 auto;
-    }
-    .section-title {
-      font-size: 2.25rem;
-      text-align: center;
-      margin-bottom: 3rem;
-      color: var(--texto-oscuro);
-    }
-
-    /* ---------- PRODUCTOS ---------- */
-    .grid {
-      display: grid;
-      gap: 2rem;
-    }
-    .grid-3 {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-    .card {
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,0,0,0.12); }
+    section { padding: 4.5rem 1rem; max-width: 1080px; margin: 0 auto; }
+    .section-title { font-size: 2.25rem; text-align: center; margin-bottom: 3rem; color: var(--texto-oscuro);}
+    /* Listas de productos */
+    .productos-categorias { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+    .categoria {
       background: var(--blanco);
-      border-radius: 1.25rem;
-      padding: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      transition: transform 0.25s;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 16px rgba(223, 194, 255, 0.07);
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      flex: 1 1 300px; min-width: 270px; max-width: 350px;
+      display: flex; flex-direction: column; align-items: center;
+      transition: transform 0.18s;
     }
-    .card:hover {
-      transform: translateY(-4px);
+    .categoria:hover { transform: translateY(-4px) scale(1.03); }
+    .categoria img { width: 90px; margin-bottom: 1rem; }
+    .categoria h3 { font-size: 1.3rem; color: var(--magenta); margin-bottom: 0.6rem;}
+    .categoria ul { width: 100%; margin: 0 0 0.8rem 0;}
+    .categoria li {
+      font-size: 1.06rem; padding: 0.3rem 0; display: flex; justify-content: space-between;
+      border-bottom: 1px dashed var(--rosa-pastel);
     }
-    .card h3 {
-      font-size: 1.25rem;
-      margin-top: 0.25rem;
+    .categoria li span.precio {
+      color: var(--chocolate); font-weight: 700;
+      font-feature-settings: "tnum";
     }
-    .badge {
-      align-self: flex-start;
-      background: var(--lila-medium);
-      color: var(--blanco);
-      padding: 0.25rem 0.75rem;
-      border-radius: 0.75rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    /* ---------- INFO ÚTIL ---------- */
-    .info-grid {
-      display: grid;
-      gap: 1.75rem;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-    .info-box {
-      background: var(--durazno);
-      padding: 1.75rem 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-    .info-box h4 {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* ---------- BLOQUE MITOS ---------- */
-    .mitos {
+    .info-condiciones {
       background: var(--lila-base);
-      border-radius: 1.25rem;
-      padding: 3rem 2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-      color: var(--texto-oscuro);
+      border-radius: 1rem;
+      margin: 2.5rem 0 0 0; padding: 2rem;
+      box-shadow: 0 4px 24px rgba(180,150,255,0.05);
+      font-size: 1.12rem;
     }
-    .mitos p {
-      margin-bottom: 1.25rem;
-    }
-    .mitos span {
-      font-weight: 800;
-      color: var(--magenta);
-    }
-
-    /* ---------- FOOTER ---------- */
-    footer {
-      background: var(--chocolate);
-      color: var(--blanco);
-      padding: 3rem 1rem;
+    .info-condiciones ul { margin: 1rem 0 0 1.5rem;}
+    .info-condiciones li { margin-bottom: 0.55rem; }
+    .contacto {
       text-align: center;
+      background: var(--durazno);
+      border-radius: 1rem;
+      margin-top: 2.5rem; padding: 2.2rem 1rem;
+      box-shadow: 0 4px 18px rgba(240,180,100,0.09);
+      font-size: 1.18rem;
+      display: flex; flex-direction: column; gap: 1rem; align-items: center;
     }
-    footer a {
-      color: var(--amarillo-chispa);
-      text-decoration: none;
-      font-weight: 600;
+    .contacto a {
+      color: var(--magenta); text-decoration: none; font-weight: 700;
+      margin: 0 0.3em;
+    }
+    .contacto .redes {
+      display: flex; gap: 1.5rem; justify-content: center; margin-top: 0.5rem;
+    }
+    .contacto .redes a { color: var(--texto-oscuro); font-weight: 600; }
+    footer {
+      background: var(--chocolate); color: var(--blanco);
+      padding: 2.5rem 1rem; text-align: center; margin-top: 2rem;
+      font-size: 1.02rem;
+    }
+    footer a { color: var(--amarillo-chispa); text-decoration: none; font-weight: 600; }
+    @media (max-width: 850px) {
+      .productos-categorias { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
-
 <body>
-  <!-- NAV -->
   <nav class="navbar">
-    <a href="#">
-      <!-- Usá tu logo real acá -->
-      <img src="logo-dulzuras-magicas.png" alt="Logo Dulzuras Mágicas" />
-    </a>
+    <a href="#"><img src="logo-dulzuras-magicas.png" alt="Logo Dulzuras Mágicas" /></a>
     <ul>
       <li><a href="#productos">Productos</a></li>
-      <li><a href="#info">Info útil</a></li>
-      <li><a href="#mitos">Mitos</a></li>
+      <li><a href="#condiciones">Condiciones</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
-  <!-- HERO -->
   <header class="hero">
     <div>
       <h1>Pastelería artesanal<br />con un toque mágico ✨</h1>
-      <p>
-        Cada torta es un abrazo. Encargá la tuya y celebrá con sabores bien
-        caseros.
-      </p>
-      <a
-        class="btn"
-        href="https://wa.me/541170735223?text=¡Hola!%20Quiero%20encargar%20una%20torta%20personalizada"
-        target="_blank"
-        rel="noopener"
-        >Encargá por&nbsp;WhatsApp</a
-      >
+      <p>Cada torta es un abrazo. Encargá la tuya y celebrá con sabores bien caseros.</p>
+      <a class="btn" href="https://wa.me/541170735223?text=¡Hola!%20Quiero%20encargar%20una%20torta%20personalizada" target="_blank" rel="noopener">Encargá por&nbsp;WhatsApp</a>
     </div>
   </header>
 
-  <!-- PRODUCTOS -->
   <section id="productos">
-    <h2 class="section-title">Nuestros productos</h2>
-
-    <div class="grid grid-3">
-      <!-- Card 1 -->
-      <article class="card">
-        <span class="badge">Torta clásica</span>
-        <img
-          src="rogel-placeholder.jpg"
-          alt="Rogel artesanal cubierto de merengue italiano"
-        />
-        <h3>Rogel artesanal</h3>
-        <p>
-          Capas finísimas, muuucho dulce de leche y merengue italiano tostado.
-          Pedila desde 8 porciones.
-        </p>
-      </article>
-
-      <!-- Card 2 -->
-      <article class="card">
-        <span class="badge">Galletitas</span>
-        <img
-          src="masas-sable-placeholder.jpg"
-          alt="Masas sablé y vienesas bicolor chocolate y vainilla"
-        />
-        <h3>Masas sablé &amp; vienesas</h3>
-        <p>
-          Galletitas de manteca bicolor, damero, corazones, espirales y más.
-          Caja o bandeja a tu medida.
-        </p>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="card">
-        <span class="badge">Postre liviano</span>
-        <img
-          src="merenguitos-placeholder.jpg"
-          alt="Merenguitos rellenos con dulce de leche y durazno"
-        />
-        <h3>Merenguitos rellenos</h3>
-        <p>
-          Merengue crocante por fuera, suave por dentro. Dulce de leche o fruta
-          de temporada.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <!-- INFO ÚTIL -->
-  <section id="info">
-    <h2 class="section-title">Cómo cuidar tu pedido</h2>
-
-    <div class="info-grid">
-      <div class="info-box">
-        <h4>Traslado</h4>
-        <p>
-          Sostené la caja con ambas manos y ponela en el piso del acompañante —
-          nunca sobre las piernas. Evitá el sol directo.
-        </p>
+    <h2 class="section-title">Productos y precios</h2>
+    <div class="productos-categorias">
+      <!-- TORTAS -->
+      <div class="categoria">
+        <img src="torta-placeholder.jpg" alt="Torta artesanal" />
+        <h3>Tortas</h3>
+        <ul>
+          <li>Lemon Pie <span class="precio">$39.000</span></li>
+          <li>Tiramisú <span class="precio">$45.000</span></li>
+          <li>Rogel <span class="precio">$35.000</span></li>
+          <li>Torta brownie <span class="precio">$50.000</span></li>
+          <li>Chocotorta <span class="precio">$45.000</span></li>
+          <li>Pastafrola membrillo/batata <span class="precio">$30.000</span></li>
+          <li>Cheesecake New York <span class="precio">$40.000</span></li>
+        </ul>
       </div>
-
-      <div class="info-box">
-        <h4>Conservación</h4>
-        <p>
-          Guardala en heladera o freezer, dentro de su caja. Mantenela lejos de
-          fuentes de calor y de alimentos con olores fuertes.
-        </p>
+      <!-- MASAS SECAS Y BOMBONES -->
+      <div class="categoria">
+        <img src="masas-secas-placeholder.jpg" alt="Masas secas y bombones" />
+        <h3>Masas secas y bombones</h3>
+        <ul>
+          <li>Masas secas 1kg <span class="precio">$56.000</span></li>
+          <li>Masas secas 500g <span class="precio">$28.000</span></li>
+          <li>Masas secas 250g <span class="precio">$14.000</span></li>
+          <li>Marroc 500g <span class="precio">$50.000</span></li>
+          <li>Marroc 250g <span class="precio">$25.000</span></li>
+        </ul>
       </div>
-
-      <div class="info-box">
-        <h4>Consumo</h4>
-        <p>
-          Si estaba congelada, pasala a la heladera 1&nbsp;hora antes. Sacala 15
-          minutos antes de servir para que los sabores brillen.
-        </p>
+      <!-- ALFAJORES Y BUDINES -->
+      <div class="categoria">
+        <img src="alfajor-placeholder.jpg" alt="Alfajores y budines" />
+        <h3>Alfajores y Budines</h3>
+        <ul>
+          <li>Alfajor de maicena x unidad <span class="precio">$4.500</span></li>
+          <li>Alfajor de maicena x 6u <span class="precio">$27.000</span></li>
+          <li>Budines (vainilla, chocolate, oreo, ddl, mandarina, limón, limón con amapola) <span class="precio">$15.000</span></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- MITOS VS REALIDAD -->
-  <section id="mitos">
-    <h2 class="section-title">Mitos vs realidad 🍰</h2>
+  <section id="condiciones" class="info-condiciones">
+    <h2 class="section-title" style="margin-bottom: 1.3rem;">Condiciones</h2>
+    <ul>
+      <li>Precio en base a tortas estándar de 24 cm y peso aproximado de 1,5 kg.</li>
+      <li>Entrega personal (no se hace delivery) en la zona de Villa Urquiza.</li>
+      <li>Se abona el 50% por transferencia y el otro 50% a la entrega.</li>
+      <li>Presupuestamos mesas dulces.</li>
+      <li>Solo se toman pedidos por WhatsApp con mínimo 72 hs de anticipación.</li>
+    </ul>
+  </section>
 
-    <div class="mitos">
-      <p>
-        <span>MITO:</span> “Cocinar es fácil, hornear es más fácil todavía.”
-        <br />
-        <span>👉 REALIDAD:</span> La pastelería es química: si pifiás 10 gramos,
-        chau torta.
-      </p>
-      <p>
-        <span>MITO:</span> “Si la receta dice 40 minutos, seguro está antes.”
-        <br />
-        <span>👉 REALIDAD:</span> Abrís el horno antes de tiempo y arruinás todo.
-        Bancate la ansiedad.
-      </p>
-      <p>
-        <span>MITO:</span> “Si sé cocinar, sé hacer postres.”
-        <br />
-        <span>👉 REALIDAD:</span> Hacer milanesas no te prepara para batir
-        merengue italiano.
-      </p>
+  <section id="contacto" class="contacto">
+    <h2 class="section-title" style="margin-bottom:1.1rem;">Contacto</h2>
+    <div>
+      <strong>WhatsApp:</strong>
+      <a href="https://wa.me/541170735223" target="_blank" rel="noopener">117073-5223</a>
+    </div>
+    <div>
+      <strong>Mail:</strong>
+      <a href="mailto:dulzuras.magicas@yahoo.com">dulzuras.magicas@yahoo.com</a>
+    </div>
+    <div class="redes">
+      <div><strong>Instagram:</strong>
+        <a href="https://instagram.com/dulzuras.magicas" target="_blank">@dulzuras.magicas</a>
+      </div>
+      <div><strong>TikTok:</strong>
+        <a href="https://tiktok.com/@dulzuras.magicass" target="_blank">@dulzuras.magicass</a>
+      </div>
+    </div>
+    <div style="margin-top:1.3rem;">
+      <a class="btn" href="https://wa.me/541170735223?text=¡Hola!%20Quiero%20hacer%20un%20pedido%20personalizado%20de%20torta%20o%20mesa%20dulce" target="_blank" rel="noopener">¡Encargá tu pedido!</a>
     </div>
   </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto">
-    <h2 class="section-title">Contacto</h2>
-
-    <p style="text-align:center; max-width:600px; margin:0 auto 2rem;">
-      Encargá con anticipación y contanos qué querés festejar.
-    </p>
-
-    <div style="text-align:center;">
-      <a
-        class="btn"
-        href="https://wa.me/541170735223?text=¡Hola!%20Quiero%20encargar%20una%20torta%20personalizada"
-        target="_blank"
-        rel="noopener"
-        >Hablar por&nbsp;WhatsApp</a
-      >
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
     <p>
-      &copy; 2025&nbsp;Dulzuras Mágicas — Pastelería Artesanal<br />
-      Mail:&nbsp;<a href="mailto:dulzuras.magicas@yahoo.com"
-        >dulzuras.magicas@yahoo.com</a
-      >
-      &nbsp;|&nbsp; Instagram:&nbsp;<a
-        href="https://instagram.com/dulzuras.magicas"
-        target="_blank"
-        rel="noopener"
-        >@dulzuras.magicas</a
-      >
+      &copy; 2025 Dulzuras Mágicas — Pastelería Artesanal<br />
+      <a href="mailto:dulzuras.magicas@yahoo.com">dulzuras.magicas@yahoo.com</a>
+      &nbsp;|&nbsp;
+      <a href="https://instagram.com/dulzuras.magicas" target="_blank">@dulzuras.magicas</a>
     </p>
   </footer>
 </body>
